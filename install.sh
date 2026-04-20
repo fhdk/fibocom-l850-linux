@@ -63,9 +63,9 @@ $USERNAME ALL=(ALL) NOPASSWD: /usr/local/bin/lte
 $USERNAME ALL=(ALL) NOPASSWD: /usr/bin/systemctl start xmm7360
 $USERNAME ALL=(ALL) NOPASSWD: /usr/bin/systemctl stop xmm7360
 $USERNAME ALL=(ALL) NOPASSWD: /usr/bin/systemctl restart xmm7360
-$USERNAME ALL=(ALL) NOPASSWD: /sbin/ip link set wwan0 *
-$USERNAME ALL=(ALL) NOPASSWD: /sbin/ip addr *
-$USERNAME ALL=(ALL) NOPASSWD: /sbin/ip route *
+$USERNAME ALL=(ALL) NOPASSWD: /usr/bin/ip link set wwan0 *
+$USERNAME ALL=(ALL) NOPASSWD: /usr/bin/ip addr *
+$USERNAME ALL=(ALL) NOPASSWD: /usr/bin/ip route *
 $USERNAME ALL=(ALL) NOPASSWD: /usr/bin/resolvectl dns wwan0 *
 $USERNAME ALL=(ALL) NOPASSWD: /usr/bin/nmcli radio wifi *
 EOF"

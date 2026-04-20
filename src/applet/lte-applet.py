@@ -1,19 +1,26 @@
 #!/usr/bin/env python3
 import gi
 gi.require_version('Gtk', '3.0')
-gi.require_version('AppIndicator3', '0.1')
-from gi.repository import Gtk, AppIndicator3, GLib
+
+try:
+    gi.require_version('AyatanaAppIndicator3', '0.1')
+    from gi.repository import AyatanaAppIndicator3 as AppIndicator
+except ValueError:
+    gi.require_version('AppIndicator3', '0.1')
+    from gi.repository import AppIndicator3 as AppIndicator
+# gi.require_version('AppIndicator3', '0.1')
+from gi.repository import Gtk, GLib
 import subprocess
 import re
 
 class LTEApplet:
     def __init__(self):
-        self.indicator = AppIndicator3.Indicator.new(
+        self.indicator = AppIndicator.Indicator.new(
             "lte-applet",
             "network-cellular-offline",
-            AppIndicator3.IndicatorCategory.SYSTEM_SERVICES
+            AppIndicator.IndicatorCategory.SYSTEM_SERVICES
         )
-        self.indicator.set_status(AppIndicator3.IndicatorStatus.ACTIVE)
+        self.indicator.set_status(AppIndicator.IndicatorStatus.ACTIVE)
         self._last_icon = None  # Track icon changes
         self._last_status = None  # Track status changes
         self.indicator.set_menu(self.create_menu())
