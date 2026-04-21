@@ -96,10 +96,10 @@ Common APNs:
 
 ### 4. Disable SIM PIN
 
-**Critical:** Use a phone to disable PIN lock on your SIM card before first use.
+**Critical:** Use a phone to disable PIN on your SIM card before first use.
 
 ### 5. Start Services
-Configure the APN in the environment file by creating the file `/etc/default/xmm6360` containing your provider APN.
+Configure the APN in the environment file by creating the file `/etc/default/xmm7360` containing your provider APN.
 
 ```ini
 XMM7360_APN=YOUR_APN
