@@ -16,18 +16,18 @@ This project is a fork of [binghamfluid/xmm7360-deamon](https://github.com/bingh
 
 ![LTE Applet Screenshot](docs/screenshot.png)
 
-## ✨ Features
+## Features
 
-- 🚀 **Full LTE connectivity** without ModemManager
-- 📱 **System tray applet** with signal strength indicator
-- ⚡ **Instant suspend/resume** (no modem reset required)
-- 🔄 **Auto WiFi switching** (WiFi off when LTE on)
-- 🔧 **Command-line control** (`lte on/off/suspend/resume/status`)
-- 🎯 **Auto-start on boot**
-- 💪 **No password prompts** for network changes
-- 📊 **Real-time quality monitoring** (latency, packet loss)
+- **Full LTE connectivity** without ModemManager
+- **System tray applet** with signal strength indicator
+- **Instant suspend/resume** (no modem reset required)
+- **Auto WiFi switching** (WiFi off when LTE on)
+- **Command-line control** (`lte on/off/suspend/resume/status`)
+- **Auto-start on boot**
+- **No password prompts** for network changes
+- **Real-time quality monitoring** (latency, packet loss)
 
-## 🎯 Why This Project?
+## Why This Project?
 
 The Intel XMM7360 modem in the Fibocom L850 doesn't work with standard Linux tools (ModemManager). This project provides a complete solution with:
 - Custom Python daemon for XMM7360 RPC protocol
@@ -35,7 +35,7 @@ The Intel XMM7360 modem in the Fibocom L850 doesn't work with standard Linux too
 - Proper integration with NetworkManager
 - Quality-of-life features like instant suspend/resume
 
-## 📋 Requirements
+## Requirements
 
 - **Hardware:** Fibocom L850-GL or other XMM7360-based modem
 - **OS:** Linux Mint 22 / Ubuntu 24.04 / Debian-based distro
@@ -43,7 +43,7 @@ The Intel XMM7360 modem in the Fibocom L850 doesn't work with standard Linux too
 - **Desktop:** GNOME, Cinnamon, or compatible (AppIndicator support)
 - **SIM:** PIN must be disabled
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Fork and Clone Repository
 Fork this repository and clone it to your local machine.
@@ -114,7 +114,7 @@ sudo reboot
 
 After reboot, LTE will auto-connect and the applet will appear in your system tray.
 
-## 📖 Usage
+## Usage
 
 ### System Tray Applet
 
@@ -145,7 +145,7 @@ When LTE disconnects → WiFi automatically turns ON
 
 This ensures only one connection is active.
 
-## 🔧 Configuration
+## Configuration
 
 ### Change APN
 ```bash
@@ -165,9 +165,10 @@ rm ~/.config/autostart/lte-applet.desktop
 
 Edit `~/.local/bin/lte-applet.py` and comment out the `manage_wifi()` calls.
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### LTE Won't Connect
+
 ```bash
 # Check daemon logs
 sudo journalctl -u xmm7360 -n 50
@@ -184,6 +185,9 @@ sudo systemctl restart xmm7360
 ```
 
 ### Applet Not Showing
+
+Check if the dependency on libayatane has been added to your system.
+
 ```bash
 # Check if running
 ps aux | grep lte-applet
@@ -196,15 +200,15 @@ ps aux | grep lte-applet
 
 ### Can't Resume After Suspend
 
-This is normal - wait 10-15 seconds for the UI to update after clicking Resume.
+This is normal, wait 10 to 15 seconds for the UI to update after clicking Resume.
 
 ### Connection Takes 5+ Minutes After Restart
 
-This is expected - the modem hardware needs time to reset after being stopped. Use **Suspend/Resume** instead for instant on/off.
+This is expected, the modem hardware needs time to reset after being stopped. Use **Suspend/Resume** instead for instant on/off.
 
-## 📁 Project Structure
+## Project Structure
 ```
-orange-lte-linux/
+fibocom-lte-linux/
 ├── src/
 │   ├── daemon/
 │   │   └── xmm7360-daemon-full.py    # Main LTE daemon
@@ -218,15 +222,12 @@ orange-lte-linux/
 │   └── systemd/
 │       ├── xmm7360.service           # Systemd service
 │       └── lte-nopasswd.example      # Sudoers config
-├── docs/
-│   ├── SETUP_GUIDE.md               # Detailed setup
-│   └── screenshot.png               # Applet screenshot
 ├── install.sh                        # Main installer
 ├── README.md                         # This file
-└── LICENSE                          # GPL-2.0
+└── LICENSE                           # GPL-2.0
 ```
 
-## 🤝 Contributing
+## Contributing
 
 Contributions welcome! This project was developed through extensive troubleshooting on a ThinkPad X1 Carbon.
 
@@ -239,17 +240,17 @@ Contributions welcome! This project was developed through extensive troubleshoot
 - [ ] GUI for APN configuration
 - [ ] Support for other XMM7360 modems
 
-## 📜 License
+## License
 
 GPL-2.0 (same as xmm7360-pci project)
 
-## 🙏 Credits
+## Credits
 
 - **xmm7360-pci project**: Original kernel driver and RPC implementation
 - **binghamfluid/xmm7360-deamon**: Python daemon foundation
 - **Claude.ai**: Development assistance
 
-## ⚠️ Known Limitations
+##  Known Limitations
 
 - No ModemManager support (incompatible with XMM7360)
 - SIM PIN must be disabled
@@ -257,7 +258,7 @@ GPL-2.0 (same as xmm7360-pci project)
 - Restart takes 5+ minutes due to hardware reset requirement
 - IPv6 may require additional configuration
 
-## 📞 Support
+## Support
 
 For issues specific to this setup, please open a GitHub issue.
 
@@ -267,4 +268,5 @@ For general XMM7360 issues, see:
 
 ---
 
-**Made with ❤️ for the Linux community xx Claude for coding assitance **
+Original project: Made with ❤️ for the Linux community xx Claude for coding assistance
+
