@@ -77,15 +77,16 @@ sudo systemctl enable --now systemd-resolved
 ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
 ```
 
+### 3. Disable SIM PIN
 
-### 3. Configure APN
-Edit the systemd service file:
-```bash
-sudo micro /etc/systemd/system/xmm7360.service
-``` 
-Change the APN to match your carrier:
+**Critical:** Use a phone to disable PIN on your SIM card before first use.
+
+### 4. Configure APN
+
+Configure the APN in the environment file by creating the file `/etc/default/xmm7360` containing your provider APN.
+
 ```ini
-ExecStart=/usr/local/bin/xmm7360-daemon-full.py --apn YOUR_APN
+XMM7360_APN=YOUR_APN
 ```
 
 Common APNs:
@@ -94,16 +95,8 @@ Common APNs:
 - Vodafone: `web.vodafone.de`
 - T-Mobile: `internet.t-mobile`
 
-### 4. Disable SIM PIN
-
-**Critical:** Use a phone to disable PIN on your SIM card before first use.
 
 ### 5. Start Services
-Configure the APN in the environment file by creating the file `/etc/default/xmm7360` containing your provider APN.
-
-```ini
-XMM7360_APN=YOUR_APN
-```
 
 ```bash
 # Start LTE daemon
@@ -114,6 +107,7 @@ sudo systemctl start xmm7360
 ```
 
 ### 6. Reboot (Recommended)
+
 ```bash
 sudo reboot
 ```
