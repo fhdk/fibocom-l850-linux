@@ -1,10 +1,18 @@
-#LTE Linux - Fibocom L850 (XMM7360) Setup
+# LTE Linux - Fibocom L850 (XMM7360) Setup
 
 Complete Linux solution for the **Fibocom L850-GL** LTE modem (Intel XMM7360 chipset) with GUI system tray applet.
+
+**Original project:**
 
 **Tested on:** Linux Mint 22, Ubuntu 24.04  
 **Hardware:** ThinkPad X1 Carbon with Fibocom L850-GL  
 **Carrier:** Orange France (roaming in Belgium)
+
+This project is a fork of [binghamfluid/xmm7360-deamon](https://github.com/binghamfluid/xmm7360-deamon) with adjustments for Manjaro Linux.
+
+**Tested on:** Manjaro Linux
+**Hardware:** ThinkPad T495 with Fibocom L850-GL
+**Carrier:** Lebara (roaming in Denmark using Telenor)
 
 ![LTE Applet Screenshot](docs/screenshot.png)
 
@@ -37,7 +45,9 @@ The Intel XMM7360 modem in the Fibocom L850 doesn't work with standard Linux too
 
 ## 🚀 Quick Start
 
-### 1. Clone Repository
+### 1. Fork and Clone Repository
+Fork this repository and clone it to your local machine.
+
 ```bash
 git clone https://github.com/YOUR_USERNAME/orange-lte-linux.git
 cd orange-lte-linux
@@ -49,17 +59,37 @@ chmod +x install.sh
 ./install.sh
 ```
 
-### 3. Configure APN
+Ensure you have the following packages on your Manjaro system
+
+- `systemd-resolvconf`
+- `libayatana-appindicator`
+
 ```bash
-sudo nano /etc/systemd/system/xmm7360.service
+sudo pacman -S systemd-resolvconf libayatana-appindicator
 ```
 
+Configure your system to use `systemd-resolved`
+
+```bash
+sudo systemctl enable --now systemd-resolved
+```
+```bash
+ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
+```
+
+
+### 3. Configure APN
+Edit the systemd service file:
+```bash
+sudo micro /etc/systemd/system/xmm7360.service
+``` 
 Change the APN to match your carrier:
 ```ini
 ExecStart=/usr/local/bin/xmm7360-daemon-full.py --apn YOUR_APN
 ```
 
 Common APNs:
+- Telenor Danmark: `internet`
 - Orange France: `orange`
 - Vodafone: `web.vodafone.de`
 - T-Mobile: `internet.t-mobile`
