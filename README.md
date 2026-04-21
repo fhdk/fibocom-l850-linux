@@ -99,6 +99,12 @@ Common APNs:
 **Critical:** Use a phone to disable PIN lock on your SIM card before first use.
 
 ### 5. Start Services
+Configure the APN in the environment file by creating the file `/etc/default/xmm6360` containing your provider APN.
+
+```ini
+XMM7360_APN=YOUR_APN
+```
+
 ```bash
 # Start LTE daemon
 sudo systemctl start xmm7360

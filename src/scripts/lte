@@ -11,26 +11,26 @@ NC='\033[0m'
 
 SERVICE="xmm7360.service"
 
-show_status() {
-    if systemctl is-active --quiet $SERVICE; then
-        echo -e "${GREEN}✓ LTE Modem is CONNECTED${NC}"
-        
-        # Show connection details
-        if ip addr show wwan0 &>/dev/null; then
-            IP=$(ip -4 addr show wwan0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
-            echo -e "  IP: ${GREEN}$IP${NC}"
-            
-            # Test connectivity
-            if ping -c 1 -W 2 8.8.8.8 &>/dev/null; then
-                echo -e "  Status: ${GREEN}Online${NC}"
-            else
-                echo -e "  Status: ${YELLOW}Connected but no internet${NC}"
-            fi
-        fi
-    else
-        echo -e "${RED}✗ LTE Modem is DISCONNECTED${NC}"
-    fi
-}
+#show_status() {
+#    if systemctl is-active --quiet $SERVICE; then
+#        echo -e "${GREEN}✓ LTE Modem is CONNECTED${NC}"
+#
+#        # Show connection details
+#        if ip addr show wwan0 &>/dev/null; then
+#            IP=$(ip -4 addr show wwan0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
+#            echo -e "  IP: ${GREEN}$IP${NC}"
+#
+#            # Test connectivity
+#            if ping -c 1 -W 2 8.8.8.8 &>/dev/null; then
+#                echo -e "  Status: ${GREEN}Online${NC}"
+#            else
+#                echo -e "  Status: ${YELLOW}Connected but no internet${NC}"
+#            fi
+#        fi
+#    else
+#        echo -e "${RED}✗ LTE Modem is DISCONNECTED${NC}"
+#    fi
+#}
 
 lte_on() {
     if systemctl is-active --quiet $SERVICE; then
