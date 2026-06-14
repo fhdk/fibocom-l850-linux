@@ -48,8 +48,9 @@ sudo chmod +x /usr/local/bin/modem-reset.sh
 
 echo -e "${GREEN}[3/7] Installing applet...${NC}"
 mkdir -p ~/.local/bin
-cp src/applet/lte-applet.py ~/.local/bin/
-chmod +x ~/.local/bin/lte-applet.py
+cp src/applet/lte-applet*.py ~/.local/bin/
+chmod +x ~/.local/bin/lte-applet-gtk.py
+chmod +x ~/.local/bin/lte-applet-qt.py
 
 echo -e "${GREEN}[4/7] Installing systemd service...${NC}"
 sudo cp src/systemd/xmm7360.service /etc/systemd/system/
@@ -72,7 +73,7 @@ EOF"
 
 echo -e "${GREEN}[6/7] Setting up auto-start...${NC}"
 mkdir -p ~/.config/autostart
-cp src/applet/lte-applet.desktop ~/.config/autostart/
+cp src/applet/lte-applet*.desktop ~/.config/autostart/
 
 echo -e "${GREEN}[7/7] Disabling ModemManager...${NC}"
 sudo systemctl stop ModemManager 2>/dev/null || true
