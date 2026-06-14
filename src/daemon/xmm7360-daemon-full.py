@@ -21,7 +21,7 @@ from pathlib import Path
 # Configuration
 RPC_DEVICES = ['/dev/xmm0/rpc', '/dev/wwan0xmmrpc0']
 NETWORK_INTERFACE = 'wwan0'
-DEFAULT_APN = 'web.vodafone.de'
+DEFAULT_APN = 'internet'
 MAX_RETRIES = 5
 RETRY_DELAY = 10
 IP_FETCH_TIMEOUT = 2

@@ -6,7 +6,7 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-EnvironmentFile=-/etc/default/xmm7360
+EnvironmentFile=/etc/default/xmm7360
 ExecStart=/usr/local/bin/xmm7360-daemon-full.py --apn ${XMM7360_APN}
 ExecStartPost=/usr/local/bin/configure-wwan0-post.sh
 ExecStopPost=/usr/local/bin/modem-reset.sh
@@ -25,9 +25,6 @@ ReadWritePaths=/var/log
 # Resource limits
 TimeoutStartSec=120s
 TimeoutStopSec=45s
-
-# don't let the modem init start before the system is fully booted
-OnBootSec=30s
 
 [Install]
 WantedBy=multi-user.target

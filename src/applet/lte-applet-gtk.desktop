@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=LTE Applet
-Comment=Fibocom LTE Connection Manager
+Comment=Fibocom LTE Connection Manager (GTK)
 Exec=$HOME/.local/bin/lte-applet-gtk.py
 Icon=network-cellular
 Terminal=false
