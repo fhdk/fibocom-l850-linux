@@ -73,7 +73,6 @@ EOF"
 echo -e "${GREEN}[6/7] Setting up auto-start...${NC}"
 mkdir -p ~/.config/autostart
 cp src/applet/lte-applet.desktop ~/.config/autostart/
-sed -i "s|/home/man0n0|$HOME|g" ~/.config/autostart/lte-applet.desktop
 
 echo -e "${GREEN}[7/7] Disabling ModemManager...${NC}"
 sudo systemctl stop ModemManager 2>/dev/null || true

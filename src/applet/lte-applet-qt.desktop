@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=LTE Applet (Qt)
+Comment=Fibocom LTE Connection Manager (Qt)
+Exec=$HOME/.local/bin/lte-applet-qt.py
+Icon=network-cellular
+Terminal=false
+OnlyShowIn=KDE,LXQt;
+X-KDE-autostart-phase=2
+Categories=Network;Qt;KDE;
+StartupNotify=false

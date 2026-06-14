@@ -6,5 +6,5 @@ if [ -n "$IP" ]; then
     ip addr flush dev wwan0
     ip addr add $IP/32 dev wwan0
     ip route add default dev wwan0 metric 100 2>/dev/null || true
-    resolvectl dns wwan0 8.8.8.8 1.1.1.1 2>/dev/null || true
+    sudo resolvectl dns wwan0 1.1.1.1 1.0.0.1 2>/dev/null || true
 fi

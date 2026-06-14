@@ -1,9 +1,8 @@
 [Unit]
 Description=XMM7360 LTE Modem Connection Daemon
 Documentation=https://github.com/xmm7360/xmm7360-pci
-After=network-pre.target
-Before=network.target
-Wants=network.target
+Before=network-online.target
+Wants=network-online.target
 
 [Service]
 Type=simple
@@ -26,6 +25,9 @@ ReadWritePaths=/var/log
 # Resource limits
 TimeoutStartSec=120s
 TimeoutStopSec=45s
+
+# don't let the modem init start before the system is fully booted
+OnBootSec=30s
 
 [Install]
 WantedBy=multi-user.target
